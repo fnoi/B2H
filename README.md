@@ -4,3 +4,5 @@ a couple of scripts that allow to go from a collection of blender files, contain
 
 * stuff
 * more stuff
+
+Exemplary workflow for big models:
