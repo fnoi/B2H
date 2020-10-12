@@ -7,4 +7,4 @@ a couple of scripts that allow to go from a collection of blender files, contain
 
 Exemplary workflow for big models:
 
-![full extent B2H toolchain](https://github.com/fnoi/blender_helpers/b2h_toolchain.png)
+![toolchain](https://github.com/fnoi/blender_helpers/blob/master/b2h_toolchain.PNG)
