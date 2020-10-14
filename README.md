@@ -8,3 +8,9 @@ a couple of scripts that allow to go from a collection of blender files, contain
 Exemplary workflow for big models:
 
 ![toolchain](https://github.com/fnoi/blender_helpers/blob/master/b2h_toolchain.PNG)
+
+sensible documentation:
+1. blend files (if necessary, combined/ appended and layers)
+2. obj files (simplified, cut, sceneparts)
+3. xml files (final survey, scene)
+4. xyz files (single legs, combined)
