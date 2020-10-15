@@ -11,6 +11,6 @@ Exemplary workflow for big models:
 
 sensible documentation:
 1. blend files (if necessary, combined/ appended and layers)
-2. obj files (simplified, cut, sceneparts)
+2. obj files (simplified, cut)
 3. xml files (final survey, scene)
 4. xyz files (single legs, combined)
