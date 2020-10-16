@@ -14,3 +14,4 @@ sensible documentation:
 2. obj files (simplified, cut)
 3. xml files (final survey, scene)
 4. xyz files (single legs, combined)
+5. make sure of data integrity
