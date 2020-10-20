@@ -49,14 +49,14 @@ for main_collection in bpy.data.collections:
         obj.name = main_collection.name+str(j)
         j += 1
 
-print('\nfollow up:')
-for main_collection in bpy.data.collections:
-    print('collection ', main_collection, ':')
-    if len(main_collection.all_objects.items())==0:
-        bpy.data.collections.remove(main_collection)
-        print('empty, gone')
-    else:
-        print('found sth, no harm done')
+# print('\nfollow up:')
+# for main_collection in bpy.data.collections:
+#     print('collection ', main_collection, ':')
+#     if len(main_collection.all_objects.items())==0:
+#         bpy.data.collections.remove(main_collection)
+#         print('empty, gone')
+#     else:
+#         print('found sth, no harm done')
 
 bpy.ops.object.select_all(action='DESELECT')
 bpy.context.view_layer.objects.active = obj
