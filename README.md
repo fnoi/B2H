@@ -1,6 +1,6 @@
-# blender_helpers
+# B2H
 
-a couple of scripts that allow to go from a collection of blender files, containing collections of blender objects, to helios scenes, with those blender collections encoded as material information. heavily based on Michael Neumann's Blender2Helios, adapted, fixed, extended. (don't forget to push the main .py back to his repo)
+A couple of scripts that allow to go all the way from a collection of blender files, respectively containing collections of blender objects, to helios scenes- with those blender collections encoded as material information. Heavily based on Michael Neumann's Blender2Helios, adapted, fixed, extended. (don't forget to push the main .py back to his repo)
 
 * stuff
 * more stuff
