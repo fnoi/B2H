@@ -25,7 +25,7 @@ input('')
 
 print('start renaming objects')
 for file in os.listdir(scenario_dir):
-    cmd_str = 'blender ' + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/rename_objs.py'
+    cmd_str = 'blender ' + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/rename_obj.py'
     print('-->', cmd_str, '\n')
     os.system(cmd_str)
 

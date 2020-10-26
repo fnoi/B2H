@@ -11,7 +11,7 @@ import os
 main_path = bpy.path.abspath('//')
 main_file = bpy.data.filepath
 
-with open('sc_cache.txt', 'r') as sc_cache:
+with open(main_path + 'sc_cache.txt', 'r') as sc_cache:
     scenario = sc_cache.read()
 
 sc_path = main_path + 'layers/' + scenario + '/'
