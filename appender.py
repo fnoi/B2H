@@ -40,7 +40,6 @@ for main_collection in bpy.data.collections:
 
 for app_file in os.listdir(sc_path):
     if app_file.endswith(".blend"):
-
         app_file_path = sc_path + app_file
         print('\nnow parsing', app_file_path, '\n')
         for main_collection in bpy.data.collections:

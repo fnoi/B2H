@@ -20,7 +20,6 @@ sc_cache = open(sc_path + 'sc_cache.txt', 'w')
 sc_cache.write(scenario)
 sc_cache.close()
 scenario_dir = base_dir + '/blend/layers/' + scenario + '/'
-
 print('thanks, press enter continue with scenario ', scenario)
 input('')
 
