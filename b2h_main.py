@@ -25,12 +25,12 @@ input('')
 
 print('start renaming objects')
 for file in os.listdir(scenario_dir):
-    cmd_str = 'C:\Program Files\Blender Foundation\Blender 2.83\blender.exe ' + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/rename_objs.py'
+    cmd_str = 'blender ' + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/rename_objs.py'
     print('-->', cmd_str, '\n')
     os.system(cmd_str)
 
 #enrich main.blend with all necessary collections, collect all necessary objects
-cmd_str = "C:\Program Files\Blender Foundation\Blender 2.83/blender.exe" + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/appender.py'
+cmd_str = "blender " + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/appender.py'
 print('start appender operation')
 print('-->', cmd_str, '\n')
 os.system(cmd_str)
