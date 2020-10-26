@@ -2,65 +2,74 @@
 # #  py_script = 'C:/Users/ga25mal/00_Work/02_python/appender.py'
 # #  exec(compile(open(py_script).read(), py_script, 'exec'))
 ###
-# exec(compile(open('C:/Users/ga25mal/00_Work/02_python/appender.py').read(), 'C:/Users/ga25mal/00_Work/02_python/appender.py', 'exec'))
-
+# exec(compile(open('C:/Users/ga25mal/PyCharmProjects/blender_helpers/appender.py').read(), 'C:/Users/ga25mal/PyCharmProjects/blender_helpers/appender.py', 'exec'))
 ### NEEDS MAIN.BLEND OPEN
 
 import bpy
 import os
 
-# collect content from blend files
+main_path = bpy.path.abspath('//')
+main_file = bpy.data.filepath
+
+with open('sc_cache.txt', 'r') as sc_cache:
+    scenario = sc_cache.read()
+
+sc_path = main_path + 'layers/' + scenario + '/'
+
+col_to_parse = []
+for app_file in os.listdir(sc_path):
+    print('do me a solid')
+    if app_file.endswith('.blend'):
+        app_file_path = sc_path + app_file
+        with bpy.data.libraries.load(app_file_path, link=False) as (data_from, data_to):
+            for col_name in data_from.collections:
+                col_to_parse.append(col_name)
+
+col_to_parse.sort()
+col_to_parse = list(dict.fromkeys(col_to_parse))
+
+for col in col_to_parse:
+    markus = bpy.data.collections.new(col)
+    bpy.context.scene.collection.children.link(markus)
+
+# collect content from blend files -NÖ.
 print('\nselected collections from main blend:')
+i = 1
 for main_collection in bpy.data.collections:
-    print('-', main_collection.name)
-print('\n')
-#### monitors content only
+    print('-', main_collection.name, '--', i)
+    i += 1
 
-current_assignment = 'BAU_only'
-
-directory = 'C:/Users/ga25mal/Desktop/current/layers/' + current_assignment + '/' #'Y:/dockervol/blend/layers/3/' #'Y:/mountain/BIM2SCAN/models/N51/blend_layers'
-
-for File in os.listdir(directory):
-    if File.endswith(".blend"):
-        filepath = directory + File
-        print('\nnow parsing', filepath, '\n')
-
-
+for app_file in os.listdir(sc_path):
+    if app_file.endswith(".blend"):
+        app_file_path = sc_path + app_file
+        print('\nnow parsing', app_file_path, '\n')
         for main_collection in bpy.data.collections:
             print('-- checking collection', main_collection.name)
-
-            #bpy.context.scene.collection.children.link(main_collection)
             layer_collection = bpy.context.view_layer.layer_collection.children[main_collection.name]
             bpy.context.view_layer.active_layer_collection = layer_collection
+            with bpy.data.libraries.load(app_file_path, link=False) as (data_from, data_to):
+                data_to.objects = [name for name in data_from.objects]   # if name.startswith(main_collection.name)]
+                for app_obj in data_to.objects:
+                    print(app_obj)
+                    if app_obj is not None:
+                        bpy.context.collection.objects.link(app_obj)
+                        print('---', app_obj.name, 'added')
 
-            with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to):
-                data_to.objects = [name for name in data_from.objects if name.startswith(main_collection.name)]
-                
-            for obj in data_to.objects:
-                if obj is not None:
-                    bpy.context.collection.objects.link(obj)
-                    print('---', obj.name, 'added')
-
-for main_collection in bpy.data.collections:
+for chk_col in bpy.data.collections:
     j = 1
-    for obj in main_collection.objects:
-        if j == 1:
-            print('    - starting collection ' + main_collection.name + ' with object ' + obj.name)
-        obj.name = main_collection.name+str(j)
+    for chk_obj in chk_col.objects:
+        chk_obj.name = chk_col.name + str(j)
         j += 1
 
-# print('\nfollow up:')
-# for main_collection in bpy.data.collections:
-#     print('collection ', main_collection, ':')
-#     if len(main_collection.all_objects.items())==0:
-#         bpy.data.collections.remove(main_collection)
-#         print('empty, gone')
-#     else:
-#         print('found sth, no harm done')
+for main_collection in bpy.data.collections:
+    k = 1
+    for app_obj in main_collection.objects:
+        if k == 1:
+            print('    - starting collection ' + main_collection.name + ' with object ' + app_obj.name)
+        app_obj.name = main_collection.name+str(k)
+        k += 1
 
 bpy.ops.object.select_all(action='DESELECT')
-bpy.context.view_layer.objects.active = obj
+bpy.context.view_layer.objects.active = app_obj
 
-output_path = 'Y:/dockervol/blend/' + current_assignment + '.blend'
-
-bpy.ops.wm.save_as_mainfile(filepath="Y:/dockervol/blend/full_full.blend")#C:/Users/ga25mal/Desktop/deleteme.blend")
+bpy.ops.wm.save_as_mainfile(filepath= main_path + scenario + '.blend')
