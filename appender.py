@@ -18,6 +18,7 @@ sc_path = main_path + 'layers/' + scenario + '/'
 
 col_to_parse = []
 for app_file in os.listdir(sc_path):
+    print('i am doing great')
     if app_file.endswith('.blend'):
         app_file_path = sc_path + app_file
         with bpy.data.libraries.load(app_file_path, link=False) as (data_from, data_to):
