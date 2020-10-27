@@ -9,10 +9,18 @@ import bpy
 import csv
 import bmesh
 
+main_path = bpy.path.abspath('//')
+main_file = bpy.data.filepath
+
+with open(main_path + 'sc_cache.txt', 'r') as sc_cache:
+    scenario = sc_cache.read()
+
+sc_path =  main_path + 'layers/' + scenario + '/'
+
 ## DEFINE HELIOS SCENE NAME
-helios_name = 'BAU_only_yoyo'
+helios_name = scenario
 ## DEFINE TARGET DIRECTORY
-helios_path = 'C:/Users/ga25mal/Desktop/tools/HELIOS/helios_lean/'
+helios_path = main_path[:-7]
 
 # full directory check
 helios_datapath = helios_path + 'data/'
