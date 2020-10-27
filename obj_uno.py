@@ -12,19 +12,23 @@
 import bpy
 import os
 
-directory = 'Y:/dockervol/' #'Y:\\mountain\\BIM2SCAN\\models\\N51\\blend_layers\\' #'C:\\Users\\ga25mal\\Desktop\\temp_edit\\'
-for file_name in os.listdir(directory):
-    if file_name.endswith(".blend"):
-        file_link = directory + file_name
-        obj_link = file_link.replace("blend_layers","simplified/single")
-        obj_link = obj_link.replace(".blend",".obj")
-        print('\n+++\nopening .blend ', file_link)
-        bpy.ops.wm.open_mainfile(filepath=file_link)
-        print("opening done\nexporting .obj")
-        bpy.ops.export_scene.obj(filepath=obj_link)
-        print('done\n---')
-    else:
-        continue
+main_path = bpy.path.abspath('//')
+main_file = bpy.data.filepath
+
+#    if file_name.endswith(".blend"):
+#        file_link = directory + file_name
+#        obj_link = file_link.replace("blend_layers","simplified/single")
+#        obj_link = obj_link.replace(".blend",".obj")
+#        print('\n+++\nopening .blend ', file_link)
+
+bpy.ops.wm.open_mainfile(filepath=main_file)
+print("opening done\nexporting .obj")
+bpy.ops.export_scene.obj(filepath=main_file.replace('.blend', '.obj'))
+print('done\n---')
+#    else:
+#        continue
+
+
 
 #for file in list()
 

@@ -25,14 +25,21 @@ input('')
 
 print('start renaming objects')
 for file in os.listdir(scenario_dir):
-    cmd_str = 'blender ' + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/rename_obj.py'
-    print('-->', cmd_str, '\n')
-    os.system(cmd_str)
+    if file.endswith('.blend'):
+        print(file)
+        cmd_str = 'blender ' + str(scenario_dir) + file + ' --background --python ' + base_dir + '/rename_obj.py'
+        #print('-->', cmd_str, '\n')
+        os.system(cmd_str)
 
 #enrich main.blend with all necessary collections, collect all necessary objects
-cmd_str = "blender " + str(base_dir) + '/blend/main.blend --background --python ' + base_dir + '/appender.py'
-print('start appender operation')
-print('-->', cmd_str, '\n')
+cmd_str = "blender " + base_dir + '/blend/main.blend --background --python ' + base_dir + '/appender.py'
+print('\nstart appender operation')
 os.system(cmd_str)
+
+print('create single object file')
+cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
+
+
+print('simplify mesh')
 
 ### SC_CACHE.TXT can be deleted after run is complete

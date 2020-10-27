@@ -16,9 +16,9 @@ with open(main_path + 'sc_cache.txt', 'r') as sc_cache:
 
 sc_path = main_path + 'layers/' + scenario + '/'
 
+
 col_to_parse = []
 for app_file in os.listdir(sc_path):
-    print('do me a solid')
     if app_file.endswith('.blend'):
         app_file_path = sc_path + app_file
         with bpy.data.libraries.load(app_file_path, link=False) as (data_from, data_to):
@@ -33,27 +33,32 @@ for col in col_to_parse:
     bpy.context.scene.collection.children.link(markus)
 
 # collect content from blend files -NÖ.
-print('\nselected collections from main blend:')
+print('\nselected collections for main blend:')
 i = 1
 for main_collection in bpy.data.collections:
     print('-', main_collection.name, '--', i)
     i += 1
 
 for app_file in os.listdir(sc_path):
+
     if app_file.endswith(".blend"):
         app_file_path = sc_path + app_file
         print('\nnow parsing', app_file_path, '\n')
+
         for main_collection in bpy.data.collections:
             print('-- checking collection', main_collection.name)
             layer_collection = bpy.context.view_layer.layer_collection.children[main_collection.name]
             bpy.context.view_layer.active_layer_collection = layer_collection
+
             with bpy.data.libraries.load(app_file_path, link=False) as (data_from, data_to):
-                data_to.objects = [name for name in data_from.objects]   # if name.startswith(main_collection.name)]
-                for app_obj in data_to.objects:
-                    print(app_obj)
-                    if app_obj is not None:
-                        bpy.context.collection.objects.link(app_obj)
-                        print('---', app_obj.name, 'added')
+                data_to.objects = [name for name in data_from.objects if name.startswith(main_collection.name)]
+
+            for app_obj in data_to.objects:
+                #print(app_obj)
+
+                if app_obj is not None:
+                    bpy.context.collection.objects.link(app_obj)
+                    print('---', app_obj.name, 'added')
 
 for chk_col in bpy.data.collections:
     j = 1
@@ -73,3 +78,5 @@ bpy.ops.object.select_all(action='DESELECT')
 bpy.context.view_layer.objects.active = app_obj
 
 bpy.ops.wm.save_as_mainfile(filepath= main_path + scenario + '.blend')
+
+print('\nappender complete')
