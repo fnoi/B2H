@@ -20,7 +20,7 @@ sc_path =  main_path + 'layers/' + scenario + '/'
 ## DEFINE HELIOS SCENE NAME
 helios_name = scenario
 ## DEFINE TARGET DIRECTORY
-helios_path = main_path[:-6] + 'helios_lean/'
+helios_path = main_path[:-10] + 'helios_lean/'
 
 # full directory check
 helios_datapath = helios_path + 'data/'
