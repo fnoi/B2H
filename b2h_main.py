@@ -36,9 +36,9 @@ cmd_str = "blender " + base_dir + '/blend/main.blend --background --python ' + b
 print('\nstart appender operation')
 os.system(cmd_str)
 
-print('create single object file')
-cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
-os.system(cmd_str)
+#print('create single object file')
+#cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
+#os.system(cmd_str)
 
 print('run blender 2 helios export')
 cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/b2h_finale_inc_prep_FU.py'
