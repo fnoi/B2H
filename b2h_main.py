@@ -39,7 +39,14 @@ os.system(cmd_str)
 print('create single object file')
 cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
 
+print('run blender 2 helios export')
+cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/b2h_finale_inc_prep_FU.py'
+print('done, do rest')
 
-print('simplify mesh')
+#print('create single object file')
+#cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
+
+
+#print('simplify mesh')
 
 ### SC_CACHE.TXT can be deleted after run is complete
