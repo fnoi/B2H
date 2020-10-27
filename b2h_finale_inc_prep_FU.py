@@ -47,7 +47,7 @@ for COL in list(bpy.data.collections):
     for OBJ in COL.objects:
         if j == 1:
             print('    - starting collection ' + COL.name + ' with object ' + OBJ.name)
-        OBJ.name = COL.name + '_' + str(j)
+        OBJ.name = COL.name+str(j)
         j += 1
     
 print('01 -- complete\n')
@@ -60,14 +60,14 @@ sceneparts_path = helios_path + 'data\\sceneparts\\'
 name_mtl = 'materials.mtl'
 name_csv = 'materials.csv'
 
-# bpy.ops.object.select_all(action='SELECT')
-# bpy.ops.object.mode_set(mode='EDIT')
-# bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.object.mode_set(mode='OBJECT')
 
-# bpy.ops.object.origin_set(type='ORIGIN_CURSOR', center='MEDIAN')
-# bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='MEDIAN')
+bpy.ops.object.origin_set(type='ORIGIN_CURSOR', center='MEDIAN')
+bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='MEDIAN')
 
-# bpy.ops.object.select_all(action='DESELECT')
+bpy.ops.object.select_all(action='DESELECT')
 
 with open (helios_scenepartspath + name_mtl, 'w') as mtl_file, open (helios_scenepartspath + name_csv, 'w', newline='') as csv_file:
     for collection in list(bpy.data.collections):
