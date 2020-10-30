@@ -45,6 +45,7 @@ cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --
 os.system((cmd_str))
 print('done, do rest')
 
+
 #print('create single object file')
 #cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
 
