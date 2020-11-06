@@ -5,7 +5,7 @@ A couple of scripts that allow to go all the way from a collection of blender fi
 * stuff
 * more stuff
 
-Exemplary workflow for big models:
+Exemplary workflow for big models: (!reconsider with b2h_main)
 
 ![toolchain](https://github.com/fnoi/blender_helpers/blob/master/b2h_toolchain.PNG)
 
