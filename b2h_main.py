@@ -36,7 +36,7 @@ cmd_str = "blender " + base_dir + '/blend/main.blend --background --python ' + b
 print('\nstart appender operation')
 os.system(cmd_str)
 
-#save as single obj file for remeshing
+#save as single obj file for remeshing - copy out, remesh localy, place scanners, copy in resulting survey
 cmd_str = "blender " + base_dir + '/blend/' + scenario + '.blend --background --python ' + base_dir + '/obj_uno.py'
 print('\ncreate single object file')
 os.system(cmd_str)
