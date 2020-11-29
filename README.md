@@ -5,6 +5,23 @@ A couple of scripts that allow to go all the way from a collection of blender fi
 * stuff
 * more stuff
 
+## file structure
+
+```bash
+├─ dockervol
+    ├─ B2H
+        ├─ blend               # Output from various benchmark runs
+            ├─ layers
+            └─ (src)
+        ├─ b2h_main.py
+        └─ ...
+    ├─ helios_lean
+        ├─ data
+            ├─ surveys
+                ├─ ~scenario
+```
+
+
 Exemplary workflow for big models: (!reconsider with b2h_main)
 
 ![toolchain](https://github.com/fnoi/blender_helpers/blob/master/b2h_toolchain.PNG)
