@@ -1,6 +1,17 @@
 import os
-import pickle
+import platform
 
+current_os = os.name
+specific_os = platform.os
+if current_os == 'nt':
+    blend_call = 'C:/Program Files/Blender Foundation/Blender 2.83/blender.exe'
+elif current_os == 'posix':
+    blend_call = 'blender'
+else:
+    print('unknown OS, process stopped')
+    break
+
+print('welcome to B2H on ', specific_os)
 print('\n ____________________________')
 print('| ,_____.    ,__.   ,_.  ,_. |\\')
 print('| | ,__. \\  /__  )  | |  | | | |')
